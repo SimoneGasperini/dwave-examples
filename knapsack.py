@@ -38,9 +38,6 @@ cqm.add_constraint(quicksum(x[i] for i in range(n)) <= 2, label='max items')
 sampler = LeapHybridCQMSampler()
 sampleset = sampler.sample_cqm(cqm)
 
-print("\nFull sample set:")
-print(sampleset)
-
-feasible_sampleset = sampleset.filter(lambda row: row.is_feasible)
+feasible_sampleset = sampleset.filter(lambda row: row.is_feasible).aggregate()
 print("\nFeasible sample set:")
 print(feasible_sampleset)
